@@ -1,24 +1,68 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './CollegeBasketballTeams.json';
+
+const teams = data.teams;
+
+interface TeamProps {
+  tid: number;
+  cid: number;
+  did: number;
+  school: string;
+  name: string;
+  abbrev: string;
+  pop: number;
+  city: string;
+  state: string;
+  latitude: number;
+  longitude: number;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
+      <Welcome />
+      <TeamList />
+    </div>
+  );
+}
+
+function Welcome() {
+  return (
+    <div className="App-header">
+      <header className="Center">
+        <h1>Welcome to March Madness</h1>
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          This site will allow you to see all NCAA Basketball teams, along with
+          their mascot name and location.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+    </div>
+  );
+}
+
+class Team extends React.Component<TeamProps> {
+  render() {
+    const oneTeam = this.props;
+
+    return (
+      <div className="team-card">
+        <h3>{oneTeam.school}</h3>
+        <h4>{oneTeam.name}</h4>
+        <p>
+          {oneTeam.city}, {oneTeam.state}
+        </p>
+      </div>
+    );
+  }
+}
+
+function TeamList() {
+  return (
+    <div className="team-list">
+      {teams.map((teamNum) => (
+        <Team {...teamNum} />
+      ))}
     </div>
   );
 }
