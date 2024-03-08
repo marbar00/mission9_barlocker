@@ -25,12 +25,18 @@
   width: 200px;
 }
 
+.team-card:hover {
+  background-color: #282c34;
+  color: white;
+  transition: 300ms;
+}
+
 footer {
   background-color: #282c34;
   color: white;
   padding: 20px;
   text-align: center;
-  position: fixed;
+
   bottom: 0;
   width: 100%;
 }
