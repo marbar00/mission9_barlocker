@@ -23,6 +23,7 @@ function App() {
     <div>
       <Welcome />
       <TeamList />
+      <Goodbye />
     </div>
   );
 }
@@ -63,6 +64,14 @@ function TeamList() {
       {teams.map((teamNum) => (
         <Team {...teamNum} />
       ))}
+    </div>
+  );
+}
+
+function Goodbye() {
+  return (
+    <div>
+      <footer>&copy; Mission9_Barlocker | March Madness</footer>
     </div>
   );
 }
